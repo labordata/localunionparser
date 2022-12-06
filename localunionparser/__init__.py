@@ -30,7 +30,7 @@ LABELS = [
     "LocalIdentifier",
     "UnitIdentifier",
     "GenitiveOf",
-    "NotName"
+    "NotName",
 ]  # The labels should be a list of strings
 
 # ***************** OPTIONAL CONFIG ***************************************************
@@ -154,27 +154,27 @@ def tokens2features(tokens):
 
     return feature_sequence
 
+
 def tokenFeatures(token):
-    if token in (u'&', u'#', u'½'):
+    if token in ("&", "#", "½"):
         token_clean = token
     else:
-        token_clean = re.sub(r'(^[\W]*)|([^.\w]*$)', u'', token,
-                             flags=re.UNICODE)
+        token_clean = re.sub(r"(^[\W]*)|([^.\w]*$)", "", token, flags=re.UNICODE)
 
-    token_abbrev = re.sub(r'[.]', u'', token_clean.lower())
+    token_abbrev = re.sub(r"[.]", "", token_clean.lower())
     features = {
-        'abbrev': token_clean[-1] == u'.',
-        'digits': digits(token_clean),
-        'word': (token_abbrev
-                 if not token_abbrev.isdigit()
-                 else False),
-        'length': (u'd:' + str(len(token_abbrev))
-                   if token_abbrev.isdigit()
-                   else u'w:' + str(len(token_abbrev))),
-        'endsinpunc': (token[-1]
-                       if bool(re.match('.+[^.\w]', token, flags=re.UNICODE))
-                       else False),
-        'has.vowels': bool(set(token_abbrev[1:]) & set('aeiou')),
+        "abbrev": token_clean[-1] == ".",
+        "digits": digits(token_clean),
+        "word": (token_abbrev if not token_abbrev.isdigit() else False),
+        "length": (
+            "d:" + str(len(token_abbrev))
+            if token_abbrev.isdigit()
+            else "w:" + str(len(token_abbrev))
+        ),
+        "endsinpunc": (
+            token[-1] if bool(re.match(".+[^.\w]", token, flags=re.UNICODE)) else False
+        ),
+        "has.vowels": bool(set(token_abbrev[1:]) & set("aeiou")),
     }
 
     return features
@@ -182,9 +182,8 @@ def tokenFeatures(token):
 
 def digits(token):
     if token.isdigit():
-        return 'all_digits'
+        return "all_digits"
     elif set(token) & set(string.digits):
-        return 'some_digits'
+        return "some_digits"
     else:
-        return 'no_digits'
-
+        return "no_digits"
