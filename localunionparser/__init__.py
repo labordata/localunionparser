@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import pycrfsuite
-import os
+import importlib.resources
 import re
+import string
 import warnings
 from collections import OrderedDict
-import string
 
+import pycrfsuite
 
 #  _____________________
 # |1. CONFIGURE LABELS! |
@@ -43,7 +43,10 @@ MODEL_FILE = "learned_settings.crfsuite"  # filename for the crfsuite settings f
 
 try:
     TAGGER = pycrfsuite.Tagger()
-    TAGGER.open(os.path.split(os.path.abspath(__file__))[0] + "/" + MODEL_FILE)
+    with importlib.resources.as_file(
+        importlib.resources.files("localunionparser").joinpath(MODEL_FILE)
+    ) as model_path:
+        TAGGER.open(str(model_path))
 except IOError:
     TAGGER = None
     warnings.warn(
