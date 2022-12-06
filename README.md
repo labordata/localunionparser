@@ -7,10 +7,10 @@ Probabilistic Parser for Local Parser Names
 ```
 
 ## To Use
-```pycon
-> import localunionparser
-> localunionparser.parse('UNITE HERE 10')
+```Python console
+>>> import localunionparser
+>>> localunionparser.parse('UNITE HERE 10')
 [('UNITE', 'AffiliationAbbreviation'), ('HERE', 'AffiliationAbbreviation'), ('10', 'LocalIdentifier')]
-> localunionparser.tag('UNITE HERE 10')
+>>> localunionparser.tag('UNITE HERE 10')
 OrderedDict([('AffiliationAbbreviation', 'UNITE HERE'), ('LocalIdentifier', '10')])
 ```
