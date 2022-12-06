@@ -12,7 +12,7 @@ setup(
     name="localunionparser",
     packages=["localunionparser"],
     license="The MIT License: http://www.opensource.org/licenses/mit-license.php",
-    install_requires=["python-crfsuite>=0.7", "lxml"],
+    install_requires=["python-crfsuite>=0.7"],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
