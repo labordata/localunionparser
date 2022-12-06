@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "localunionparser"
+version = "0.1"
+license = {text = "The MIT License: http://www.opensource.org/licenses/mit-license.php"}
+description = "A probabilistic parser for local union names"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 2 :: Only",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = ["python-crfsuite>=0.7"]
+
+[project.urls]
+Homepage = "https://github.com/labordata/localunionparser"
+
+[tool.setuptools]
+packages = ["localunionparser"]
+include-package-data = false
+
+[tool.setuptools.package-data]
+localunionparser = ["learned_settings.crfsuite"]
