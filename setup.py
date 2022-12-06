@@ -11,7 +11,7 @@ setup(
     description="A probabilistic parser for local union names",
     name="localunionparser",
     packages=["localunionparser"],
-    package_data={'localunionparser': ['learned_settings.crfsuite']},
+    package_data={"localunionparser": ["learned_settings.crfsuite"]},
     license="The MIT License: http://www.opensource.org/licenses/mit-license.php",
     install_requires=["python-crfsuite>=0.7"],
     classifiers=[
